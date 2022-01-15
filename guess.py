@@ -74,6 +74,24 @@ def filter(solutions, guess, hint):
     return valid
 
 
+def hard(guesses, prev_guess, hint):
+    valid = []
+
+    for guess in guesses:
+        possible = True
+
+        for i in range(5):
+            if hint[i] == "X":
+                if prev_guess[i] != guess[i]:
+                    possible = False
+                    break
+
+        if possible:
+            valid.append(guess)
+
+    return valid
+
+
 if __name__ == "__main__":
     working_solutions = solutions.copy()
     working_guesses = guesses.copy()
@@ -85,6 +103,7 @@ if __name__ == "__main__":
         hint = input("Hint> ")
 
         working_solutions = filter(working_solutions, best_guess, hint)
+        # working_guesses = hard(working_guesses, best_guess, hint)
 
     if len(working_solutions) != 1:
         raise Exception(f"Failed to arrive at solution!")

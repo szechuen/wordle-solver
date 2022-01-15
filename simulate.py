@@ -34,6 +34,8 @@ if __name__ == "__main__":
             hint = check(solution, best_guess)
 
             working_solutions = filter(working_solutions, best_guess, hint)
+            # working_guesses = hard(working_guesses, best_guess, hint)
+
             steps += 1
 
         if len(working_solutions) != 1 or working_solutions[0] != solution:
